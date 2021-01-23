@@ -85,7 +85,7 @@ def main():
 
 if __name__ == '__main__':
     while (1):
-        if time.localtime().tm_hour != 1:
+        if time.localtime().tm_hour == 1:
             main()
         else:
             print("等待中……"+time.ctime())
