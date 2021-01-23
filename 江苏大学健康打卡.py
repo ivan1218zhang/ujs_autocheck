@@ -11,7 +11,7 @@ url = "http://yun.ujs.edu.cn/xxhgl/yqsb/grmrsb"
 # 学号和密码
 id=""
 keywords=""
-# 自行复制post的data数据 字典格式 浏览器F12查看post的请求
+# 自行复制post的data数据 浏览器F12查看post的请求
 data = {
 
 }
@@ -30,13 +30,8 @@ def recognize_text(image):
     return text
 
 
-def _get_cookies():
-    chrome_driver = Chrome(executable_path='chromedriver.exe')
-    chrome_driver.maximize_window()  # 将浏览器最大化
-    chrome_driver.get(url)
-    chrome_driver.find_element_by_xpath("//input[@placeholder='一卡通号']").send_keys(id)
+def config_(chrome_driver):
     chrome_driver.find_element_by_xpath("//input[@placeholder='密码']").send_keys(keywords)
-    sleep(2)
     chrome_driver.save_screenshot('printscreen.png')
     x = 1365
     y = 465
@@ -56,8 +51,15 @@ def _get_cookies():
         chrome_driver.close()
         daka(cookies)
     except Exception:
-        chrome_driver.close()
-        _get_cookies()
+        config_(chrome_driver)
+
+
+def _get_cookies():
+    chrome_driver = Chrome(executable_path='chromedriver.exe')
+    chrome_driver.maximize_window()  # 将浏览器最大化
+    chrome_driver.get(url)
+    chrome_driver.find_element_by_xpath("//input[@placeholder='一卡通号']").send_keys(id)
+    config_(chrome_driver)
 
 
 def make_cookies(chrome_driver):
@@ -85,7 +87,7 @@ def main():
 
 if __name__ == '__main__':
     while (1):
-        if time.localtime().tm_hour == 1:
+        if time.localtime().tm_hour != 1:
             main()
         else:
             print("等待中……"+time.ctime())
