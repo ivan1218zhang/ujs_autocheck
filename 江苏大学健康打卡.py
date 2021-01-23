@@ -12,7 +12,7 @@ url = "http://yun.ujs.edu.cn/xxhgl/yqsb/grmrsb"
 # 学号和密码
 id=""
 keywords=""
-# 自行复制post的data数据 浏览器F12查看网络
+# 自行复制post的data数据 浏览器F12查看post的请求
 data = {
 
 }
