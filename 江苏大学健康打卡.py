@@ -7,6 +7,7 @@ import cv2 as cv
 import pytesseract
 import sys
 import io
+import time
 
 url = "http://yun.ujs.edu.cn/xxhgl/yqsb/grmrsb"
 # 学号和密码
