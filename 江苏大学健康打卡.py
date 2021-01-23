@@ -83,6 +83,13 @@ def daka(cookies):
     print(response.status_code)
 
 
-if __name__ == '__main__':
+def main():
     get_cookies()
     print("打卡成功")
+
+
+if __name__ == '__main__':
+    while (1):
+        if time.localtime().tm_hour == 1:
+            main()
+        sleep(3400)
